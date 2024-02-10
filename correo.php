@@ -22,19 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configuración de PHPMailer
     $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host = 'smtp.zoho.com';
+    $mail->Host = 'smtp.zeptomail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'cafecito@pinedodaniel.shop';
-    $mail->Password = 'jaziulxd';
+    $mail->Username = 'emailapikey';
+    $mail->Password = 'wSsVR612/xfwC6gryD2ldeZqzQxUDwzxRhl00AD37nauGPyX8cdukhLGAAWmHPEbGTM8EToV8LsoyR9Rg2YIj9V7w1BRWiiF9mqRe1U4J3x17qnvhDzNW2hdkRaNKI8BwA5pnGNlEc4j+g==';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
-    // Configurar remitente y destinatario para Zoho
-    $mail->setFrom('cafecito@pinedodaniel.shop', 'Daniel');
-    $mail->addAddress('cafecito@pinedodaniel.shop'); // Correo de Zoho
+    // Configurar remitente y destinatario
+    $mail->setFrom('noreply@pinedodaniel.shop', 'Daniel');
+    $mail->addAddress('cafecito@pinedodaniel.shop'); // Correo de destino
 
-
-    // Configurar contenido del mensaje para Zoho
+    // Configurar contenido del mensaje
     $mail->isHTML(true);
     $mail->Subject = "Nuevo Mensaje de Contacto";
     $mail->Body = "Has recibido un nuevo mensaje desde el formulario de contacto de tu sitio web.<br><br>Detalles:<br><br>Nombre: $name<br>Email: $email<br>Mensaje: $message";
@@ -65,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        // Enviar correo a Zoho
+        // Enviar correo
         $mail->send();
 
         // Enviar correo de agradecimiento al usuario
